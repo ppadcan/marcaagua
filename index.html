@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Protege tu DNI - Marca de Agua Segura</title>
+    <meta name="description"
+        content="Añade marcas de agua a tu DNI de forma segura y local. Sin subir datos a ningún servidor.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔒</text></svg>">
+</head>
+
+<body>
+    <div class="background-blobs">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <main class="app-container">
+        <header class="app-header">
+            <h1>Protege tu Identidad</h1>
+            <p>Añade una marca de agua a tu DNI. <strong>Procesamiento 100% local en tu navegador.</strong></p>
+        </header>
+
+        <section class="upload-section" id="drop-zone">
+            <div class="upload-content">
+                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="upload-icon">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                    <polyline points="17 8 12 3 7 8" />
+                    <line x1="12" y1="3" x2="12" y2="15" />
+                </svg>
+                <h3>Arrastra y suelta tu imagen aquí</h3>
+                <p>o <label for="file-input" class="file-label">selecciona un archivo</label></p>
+                <input type="file" id="file-input" accept="image/*" multiple hidden>
+            </div>
+        </section>
+
+        <section class="editor-section" id="editor-container" style="display: none;">
+            <!-- Las imágenes editables se inyectarán aquí -->
+        </section>
+
+        <section class="controls-section">
+            <div class="control-group">
+                <label for="watermark-text">Texto de la marca</label>
+                <input type="text" id="watermark-text" value="COPIA DNI - SOLO USO AUTORIZADO"
+                    placeholder="Ej: COPIA PARA ALQUILER">
+            </div>
+
+            <div class="control-group">
+                <label for="opacity-slider">Opacidad: <span id="opacity-value">30%</span></label>
+                <input type="range" id="opacity-slider" min="10" max="100" value="30">
+            </div>
+
+            <div class="control-group">
+                <label for="color-picker">Color Marca de Agua</label>
+                <div class="color-options">
+                    <button class="color-btn active" data-color="#ff0000" style="background-color: #ff0000;"></button>
+                    <button class="color-btn" data-color="#000000" style="background-color: #000000;"></button>
+                    <button class="color-btn" data-color="#ffffff"
+                        style="background-color: #ffffff; border: 1px solid #ccc;"></button>
+                    <button class="color-btn" data-color="#0000ff" style="background-color: #0000ff;"></button>
+                </div>
+            </div>
+            <div class="control-group">
+                <button id="process-btn" class="primary-btn">Procesar Imágenes</button>
+                <div style="margin-top: 10px;">
+                    <button id="reset-app-btn" class="secondary-btn" style="width: 100%; text-align: center;">🔄 Cambiar
+                        Imagen / Reiniciar</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="preview-section" id="preview-container">
+            <!-- Los resultados se inyectarán aquí -->
+        </section>
+    </main>
+
+    <div id="censorship-hint" class="hint-popup">
+        <div class="hint-content">
+            <span class="hint-icon">👆</span>
+            <p><strong>Truco:</strong> Puedes censurar datos sensibles dibujando sobre la imagen con el ratón o el dedo.
+            </p>
+            <button id="close-hint" class="close-hint-btn">&times;</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
